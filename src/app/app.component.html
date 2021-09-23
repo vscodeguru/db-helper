@@ -1,0 +1,28 @@
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <textarea id="sqlQuery" rows="40" cols="50" [(ngModel)]="SqlQuery">
+        </textarea>
+      </td>
+      <td>
+        <button (click)="SqlToCSharp()">Convert To C#</button>
+        <br />
+        <br />
+        <button (click)="CSharpToSQL()">Convert To Sql</button>
+        <br />
+        <br />
+        <button (click)="Reset()">Reset</button>
+      </td>
+      <td>
+        <textarea
+          rows="40"
+          cols="50"
+          highlight-js
+          [lang]="lang"
+          [(ngModel)]="Output"
+        ></textarea>
+      </td>
+    </tr>
+  </tbody>
+</table>
