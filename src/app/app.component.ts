@@ -28,11 +28,11 @@ export class AppComponent {
     queryLines.forEach((str, idx) => {
       let line = '';
       if (queryLines.length - 1 === idx) {
-        line = `\t\t\t\"${str}\"; \n`;
+        line = `\t\t\t\"${str} \"; \n`;
       } else if (idx >= 1) {
-        line = `\t\t\t\"${str}\" + \n`;
+        line = `\t\t\t\"${str} \" + \n`;
       } else {
-        line = `\"${str}\" + \n`;
+        line = `\"${str} \" + \n`;
       }
       convertedQueryLines.push(line);
     });
