@@ -43,7 +43,9 @@ export class AppComponent {
   CSharpToSQL() {
     this.lang = 'sql';
     this.Output = this.replaceAll(this.SqlQuery, '"', '');
+    this.Output = this.replaceAll(this.Output, 'var sql =', '');
     this.Output = this.replaceAll(this.Output, '+', '');
+    this.Output = this.replaceAll(this.Output, '\\n', '');
     this.Output = this.replaceAll(this.Output, ';', '');
     console.log(this.Output);
   }
