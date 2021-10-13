@@ -1,1 +1,9 @@
 /* Add application styles & imports to this file! */
+
+textarea,
+.hljs {
+  height: 460px !important;
+  overflow-y: auto !important;
+  overflow-x: auto !important;
+  width: 360px;
+}
