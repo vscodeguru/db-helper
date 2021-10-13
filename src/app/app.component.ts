@@ -1,10 +1,11 @@
-import { Component, VERSION } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
 })
 export class AppComponent {
+  // @ViewChild('txtOutputQuery') txtOutputQuery: ElementRef;
   lang: 'sql' | 'csharp' = 'sql';
   SqlQuery: string = `"select ow.* from vendors v " +
   "inner join contract_service_property csp on csp.Vendor_ID = v.Vendor_ID " +
@@ -46,6 +47,7 @@ export class AppComponent {
     this.Output = this.replaceAll(this.Output, 'var sql =', '');
     this.Output = this.replaceAll(this.Output, '+', '');
     this.Output = this.replaceAll(this.Output, '\\n', '');
+    this.Output = this.replaceAll(this.Output, '\\t', '');
     this.Output = this.replaceAll(this.Output, ';', '');
     console.log(this.Output);
   }
@@ -60,5 +62,19 @@ export class AppComponent {
   }
   escapeRegExp(string) {
     return string.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+  }
+
+  copyToClipboard() {
+    let selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = this.Output;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
   }
 }

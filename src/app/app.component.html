@@ -13,6 +13,9 @@
         <br />
         <br />
         <button (click)="Reset()">Reset</button>
+        <br />
+        <br />
+        <button (click)="copyToClipboard()">Copy</button>
       </td>
       <td>
         <textarea
@@ -21,6 +24,7 @@
           highlight-js
           [lang]="lang"
           [(ngModel)]="Output"
+          #txtOutputQuery
         ></textarea>
       </td>
     </tr>
